@@ -33,6 +33,9 @@ opt.showmatch = true
 -- Leader key
 vim.g.mapleader = ' '
 
+-- Input
+vim.cmd('set timeoutlen=100')
+
 -- Mapping Functions
 function MapN(key, command)
   vim.keymap.set('n', key, command, { noremap = true, nowait = true })
