@@ -34,7 +34,7 @@ opt.showmatch = true
 vim.g.mapleader = ' '
 
 -- Input
-vim.cmd('set timeoutlen=100')
+-- vim.cmd('set timeoutlen=1000')
 
 -- Mapping Functions
 function MapN(key, command)
