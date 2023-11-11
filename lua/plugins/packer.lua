@@ -28,5 +28,4 @@ require('packer').startup(function(use)
   use { 'hrsh7th/cmp-path' }
   use { 'saadparwaiz1/cmp_luasnip' }
   use({	'L3MON4D3/LuaSnip', run = 'make install_jsregexp' })
-
 end)

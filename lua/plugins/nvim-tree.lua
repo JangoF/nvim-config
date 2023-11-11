@@ -7,6 +7,7 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, { buffer = bufnr, noremap = true })
   vim.keymap.set('n', 'l', api.node.open.edit, { buffer = bufnr, noremap = true })
   vim.keymap.set('n', 'a', api.fs.create, { buffer = bufnr, noremap = true })
+  vim.keymap.set('n', 'd', api.fs.remove, { buffer = bufnr, noremap = true })
 
   vim.keymap.set('n', 'f', function()
     local hop = require('hop')
@@ -35,10 +36,6 @@ require('nvim-tree').setup({
   renderer = {
     root_folder_label = false
   },
-
-  -- view = {
-  --   hide_root_folder = true,
-  -- },
 })
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
