@@ -1,30 +1,31 @@
 -- tokyonight
-require('tokyonight').setup({
-  style = 'night',
+require("tokyonight").setup({
+	style = "night",
 })
 
 -- gruvbox
-require('gruvbox').setup({
-  contrast = 'hard',
+require("gruvbox").setup({
+	contrast = "hard",
 })
 
 -- catppuccin
-require('catppuccin').setup({
-    flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+require("catppuccin").setup({
+	flavour = "macchiato",
 })
 
 -- nvim-web-devicons
-require('nvim-web-devicons').setup({})
+require("nvim-web-devicons").setup({})
 
 -- appearance
 local opt = vim.opt
 
-opt.colorcolumn = '80'
-opt.signcolumn = 'number'
+opt.colorcolumn = "80"
+opt.signcolumn = "number"
 opt.termguicolors = true
-opt.fillchars = { eob = ' ' }
+opt.fillchars = { eob = " " }
 
-opt.background = 'dark'
+opt.background = "dark"
+
 -- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('catppuccin')
-vim.cmd.colorscheme('gruvbox')
+vim.cmd.colorscheme("gruvbox")
