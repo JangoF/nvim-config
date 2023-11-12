@@ -12,6 +12,7 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+
 -- local opt = vim.opt
 
 -- opt.foldmethod = "expr"

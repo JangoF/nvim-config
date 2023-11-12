@@ -8,6 +8,7 @@ local function on_attach(bufnr)
 	vim.keymap.set("n", "l", api.node.open.edit, { buffer = bufnr, noremap = true })
 	vim.keymap.set("n", "a", api.fs.create, { buffer = bufnr, noremap = true })
 	vim.keymap.set("n", "d", api.fs.remove, { buffer = bufnr, noremap = true })
+	vim.keymap.set("n", "r", api.fs.rename_sub, { buffer = bufnr, noremap = true })
 
 	vim.keymap.set("n", "f", function()
 		local hop = require("hop")

@@ -10,7 +10,7 @@ require("gruvbox").setup({
 
 -- catppuccin
 require("catppuccin").setup({
-	flavour = "macchiato",
+	flavour = "mocha",
 })
 
 -- nvim-web-devicons
@@ -27,5 +27,5 @@ opt.fillchars = { eob = " " }
 opt.background = "dark"
 
 -- vim.cmd.colorscheme('tokyonight')
--- vim.cmd.colorscheme('catppuccin')
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme('catppuccin')
+-- vim.cmd.colorscheme("gruvbox")

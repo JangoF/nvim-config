@@ -21,6 +21,9 @@ local plugins = {
 
 	"phaazon/hop.nvim",
 
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+
 	{ "nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
 
@@ -33,17 +36,26 @@ local plugins = {
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 	"numToStr/Comment.nvim",
 
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.4", dependencies = "nvim-lua/plenary.nvim" },
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.4",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+	},
 
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"saadparwaiz1/cmp_luasnip",
-	"L3MON4D3/LuaSnip",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"FelipeLema/cmp-async-path",
+			"neovim/nvim-lspconfig",
+			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
+			{ "tzachar/cmp-tabnine", build = "./install.sh", dependencies = "hrsh7th/nvim-cmp" },
+		},
+	},
 
 	"mhartington/formatter.nvim",
 }

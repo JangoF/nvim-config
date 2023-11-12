@@ -17,7 +17,8 @@ require("plugins/indent-blankline")
 require("plugins/lspconfig")
 require("plugins/comment")
 
-require("plugins/cmp")
+require("plugins/nvim-cmp")
+require("plugins/cmp-tabnine")
 require("plugins/formatter")
 
 require("keymap")
