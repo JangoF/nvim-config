@@ -19,4 +19,4 @@ end
 MapV("<", "<cmd>lua Shift('<')<CR>")
 MapV(">", "<cmd>lua Shift('>')<CR>")
 
-MapV("<leader>ff", "<cmd>Format<CR>")
+MapN("<leader>ff", "<cmd>Format<CR>")
