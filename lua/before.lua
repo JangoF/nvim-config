@@ -36,6 +36,13 @@ vim.g.mapleader = " "
 -- Input
 vim.cmd("set timeoutlen=1000")
 
+-- Appearance
+
+opt.colorcolumn = "80"
+opt.signcolumn = "number"
+opt.termguicolors = true
+opt.fillchars = { eob = " " }
+
 -- Mapping Functions
 
 function SetupKeymap(mode, key, command, options)

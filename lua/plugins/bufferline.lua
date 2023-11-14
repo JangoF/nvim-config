@@ -26,6 +26,6 @@ return function()
 	SetupKeymap("n", "8", "<cmd>BufferLineGoToBuffer 8<CR>")
 	SetupKeymap("n", "9", "<cmd>BufferLineGoToBuffer 9<CR>")
 
-	SetupKeymap("n", "<S-h>", "cmd>BufferLineCyclePrev<CR>")
-	SetupKeymap("n", "<S-l>", "cmd>BufferLineCycleNext<CR>")
+	SetupKeymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>")
+	SetupKeymap("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>")
 end

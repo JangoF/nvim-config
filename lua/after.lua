@@ -1,13 +1,6 @@
 -- Appearance
 
-local opt = vim.opt
-
-opt.colorcolumn = "80"
-opt.signcolumn = "number"
-opt.termguicolors = true
-opt.fillchars = { eob = " " }
-opt.background = "dark"
-
+vim.cmd.colorscheme("catppuccin") -- I dont know how fix bufferline :(
 vim.cmd.colorscheme("catppuccin")
 
 -- Keymap
@@ -27,7 +20,7 @@ SetupKeymap("nv", "<S-j>", "10j")
 SetupKeymap("nv", "<S-k>", "10k")
 SetupKeymap("nv", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>")
 
-SetupKeymap("n", "<C-w>", function()
+SetupKeymap("n", "<C-w>", function() -- TODO
 	vim.cmd("BufDel")
 
 	if vim.api.nvim_buf_line_count(0) < 2 then
@@ -47,8 +40,8 @@ SetupKeymap("v", ">", "<cmd>lua ShiftLine('>')<CR>")
 -- Other
 
 local fixBufferLineSeparatorColor = function()
-	local baseGroup = vim.api.nvim_get_hl_by_name("NvimTreeWinSeparator", true)
-	local additionalGroup = vim.api.nvim_get_hl_by_name("BufferLineTab", true)
+	local baseGroup = vim.api.nvim_get_hl(0, { name = "NvimTreeWinSeparator" })
+	local additionalGroup = vim.api.nvim_get_hl(0, { name = "BufferLineTab" })
 
 	if baseGroup.foreground == baseGroup.background then
 		baseGroup.foreground = additionalGroup.background
