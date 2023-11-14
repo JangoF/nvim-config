@@ -1,24 +1,24 @@
-require("telescope").setup({
-
-	pickers = {
-		colorscheme = {
-			theme = "dropdown",
+return function()
+	require("telescope").setup({
+		pickers = {
+			colorscheme = {
+				theme = "dropdown",
+			},
 		},
-	},
 
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
+		extensions = {
+			fzf = {
+				fuzzy = true,
+				override_generic_sorter = true,
+				override_file_sorter = true,
+				case_mode = "smart_case",
+			},
 		},
-	},
-})
+	})
 
-require("telescope").load_extension("fzf")
+	require("telescope").load_extension("fzf")
 
-MapN("<C-j>", "<cmd>wincmd j<CR>")
-MapN("<leader>lg", "<cmd>Telescope live_grep<CR>")
-MapN("<leader>cs", "<cmd>Telescope colorscheme<CR>")
-MapN("<leader>fl", "<cmd>Telescope find_files<CR>")
+	SetupKeymap("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
+	SetupKeymap("n", "<leader>cs", "<cmd>Telescope colorscheme<CR>")
+	SetupKeymap("n", "<leader>fl", "<cmd>Telescope find_files<CR>")
+end

@@ -1,44 +1,31 @@
-require("bufferline").setup({
-	options = {
-		show_buffer_close_icons = false,
-		separator_style = "thick",
-		numbers = "ordinal",
-		offsets = {
-			{
-				filetype = "NvimTree",
-				text = "File Explorer",
-				highlight = "BufferLineTab",
-				text_align = "center",
-				separator = true,
+return function()
+	require("bufferline").setup({
+		options = {
+			show_buffer_close_icons = false,
+			separator_style = "thick",
+			numbers = "ordinal",
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Explorer",
+					highlight = "BufferLineTab",
+					text_align = "center",
+					separator = true,
+				},
 			},
 		},
-	},
-})
+	})
 
-local fixBufferLineSeparatorColor = function()
-	local baseGroup = vim.api.nvim_get_hl_by_name("NvimTreeWinSeparator", true)
-	local additionalGroup = vim.api.nvim_get_hl_by_name("BufferLineTab", true)
+	SetupKeymap("n", "1", "<cmd>BufferLineGoToBuffer 1<CR>")
+	SetupKeymap("n", "2", "<cmd>BufferLineGoToBuffer 2<CR>")
+	SetupKeymap("n", "3", "<cmd>BufferLineGoToBuffer 3<CR>")
+	SetupKeymap("n", "4", "<cmd>BufferLineGoToBuffer 4<CR>")
+	SetupKeymap("n", "5", "<cmd>BufferLineGoToBuffer 5<CR>")
+	SetupKeymap("n", "6", "<cmd>BufferLineGoToBuffer 6<CR>")
+	SetupKeymap("n", "7", "<cmd>BufferLineGoToBuffer 7<CR>")
+	SetupKeymap("n", "8", "<cmd>BufferLineGoToBuffer 8<CR>")
+	SetupKeymap("n", "9", "<cmd>BufferLineGoToBuffer 9<CR>")
 
-	if baseGroup.foreground == baseGroup.background then
-		baseGroup.foreground = additionalGroup.background
-	end
-
-	baseGroup.background = additionalGroup.background
-	vim.api.nvim_set_hl(0, "BufferLineOffsetSeparator", baseGroup)
+	SetupKeymap("n", "<S-h>", "cmd>BufferLineCyclePrev<CR>")
+	SetupKeymap("n", "<S-l>", "cmd>BufferLineCycleNext<CR>")
 end
-
-vim.api.nvim_create_autocmd("ColorScheme", { callback = fixBufferLineSeparatorColor })
-fixBufferLineSeparatorColor()
-
-MapN("1", "<cmd>BufferLineGoToBuffer 1<CR>")
-MapN("2", "<cmd>BufferLineGoToBuffer 2<CR>")
-MapN("3", "<cmd>BufferLineGoToBuffer 3<CR>")
-MapN("4", "<cmd>BufferLineGoToBuffer 4<CR>")
-MapN("5", "<cmd>BufferLineGoToBuffer 5<CR>")
-MapN("6", "<cmd>BufferLineGoToBuffer 6<CR>")
-MapN("7", "<cmd>BufferLineGoToBuffer 7<CR>")
-MapN("8", "<cmd>BufferLineGoToBuffer 8<CR>")
-MapN("9", "<cmd>BufferLineGoToBuffer 9<CR>")
-
-MapN("<S-h>", "cmd>BufferLineCyclePrev<CR>")
-MapN("<S-l>", "cmd>BufferLineCycleNext<CR>")
