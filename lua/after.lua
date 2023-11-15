@@ -20,8 +20,8 @@ SetupKeymap("nv", "<S-j>", "10j")
 SetupKeymap("nv", "<S-k>", "10k")
 SetupKeymap("nv", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>")
 
-SetupKeymap("n", "<C-w>", function() -- TODO
-	vim.cmd("BufDel")
+SetupKeymap("n", "<C-w>", function()
+	vim.cmd("BDelete this")
 
 	if vim.api.nvim_buf_line_count(0) < 2 then
 		vim.cmd("NvimTreeFindFileToggle")
@@ -53,3 +53,17 @@ end
 
 vim.api.nvim_create_autocmd("ColorScheme", { callback = fixBufferLineSeparatorColor })
 fixBufferLineSeparatorColor()
+
+IsInserEnterActivated = false
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+	callback = function()
+		if IsInserEnterActivated then
+			return
+		end
+
+		IsInserEnterActivated = true
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+	end,
+})

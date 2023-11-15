@@ -7,7 +7,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"saadparwaiz1/cmp_luasnip",
 		"tzachar/cmp-tabnine",
-    "hrsh7th/cmp-nvim-lua",
+		"hrsh7th/cmp-nvim-lua",
 
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",

@@ -36,6 +36,8 @@ require("lazy").setup({
 
 	{ "numToStr/Comment.nvim", config = require("plugins.comment"), event = "BufAdd" },
 	{ "phaazon/hop.nvim", config = require("plugins.hop"), dependencies = "nvim-tree/nvim-tree.lua", event = "BufAdd" },
+	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
+	{ "lewis6991/gitsigns.nvim", opts = { signcolumn = false }, event = "BufAdd", config = true },
 
 	-- Completion
 
@@ -44,7 +46,7 @@ require("lazy").setup({
 	-- Editor
 
 	{ "akinsho/bufferline.nvim", config = require("plugins.bufferline"), dependencies = "nvim-tree/nvim-web-devicons" },
-	{ "ojroques/nvim-bufdel", config = true },
+	{ "kazhala/close-buffers.nvim", config = true },
 
 	{ "akinsho/toggleterm.nvim", config = require("plugins.toggleterm") },
 	{ "nvim-tree/nvim-tree.lua", config = require("plugins.nvim-tree"), dependencies = "nvim-tree/nvim-web-devicons" },
