@@ -1,6 +1,5 @@
 -- Appearance
 
-vim.cmd.colorscheme("catppuccin") -- I dont know how fix bufferline :(
 vim.cmd.colorscheme("catppuccin")
 
 -- Keymap
@@ -18,14 +17,29 @@ SetupKeymap("n", "<leader>ff", "<cmd>Format<CR>")
 
 SetupKeymap("nv", "<S-j>", "10j")
 SetupKeymap("nv", "<S-k>", "10k")
-SetupKeymap("nv", "<leader>e", "<cmd>NvimTreeFindFileToggle<CR>")
+SetupKeymap("nv", "<leader>e", "<cmd>NvimTreeToggle<CR>")
 
 SetupKeymap("n", "<C-w>", function()
-	vim.cmd("BDelete this")
+	local current_buffer = vim.fn.bufnr("%")
+	local elements = require("bufferline").get_elements().elements
 
-	if vim.api.nvim_buf_line_count(0) < 2 then
-		vim.cmd("NvimTreeFindFileToggle")
-		vim.cmd("NvimTreeFindFileToggle")
+	if #elements == 1 then -- If current buffer is the last one
+		local current_window = vim.api.nvim_get_current_win()
+
+		if vim.fn.bufexists(vim.fn.bufnr("NvimTree_1")) == 0 then
+			vim.cmd("NvimTreeOpen")
+		end
+
+		vim.cmd("quit " .. current_window)
+		vim.cmd("bdelete " .. current_buffer)
+	else
+		if current_buffer == elements[#elements].id then -- If current buffer is the last one in bufferline
+			vim.cmd("bprevious")
+		else
+			vim.cmd("bnext")
+		end
+
+		vim.cmd("bdelete " .. current_buffer)
 	end
 end)
 
