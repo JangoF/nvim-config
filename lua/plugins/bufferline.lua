@@ -7,10 +7,10 @@ return function()
 			offsets = {
 				{
 					filetype = "NvimTree",
-					text = "File Explorer",
-					highlight = "BufferLineTab",
-					text_align = "center",
-					separator = true,
+					-- text = "    ",
+					-- text_align = "center",
+					separator = false,
+          -- padding = 24,
 				},
 			},
 		},

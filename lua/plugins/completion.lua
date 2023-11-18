@@ -83,11 +83,11 @@ return {
 			},
 
 			sources = cmp.config.sources({
+				{ name = "luasnip", max_item_count = 2 },
 				{ name = "cmp_tabnine", max_item_count = 2 },
 				{ name = "nvim_lsp", max_item_count = 2 },
-				{ name = "luasnip", max_item_count = 2 },
-				{ name = "nvim_lua", max_item_count = 2 },
 				{ name = "buffer", max_item_count = 2 },
+				{ name = "nvim_lua", max_item_count = 2 },
 				{ name = "async_path", max_item_count = 8 },
 			}),
 		})

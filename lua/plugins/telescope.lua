@@ -17,8 +17,4 @@ return function()
 	})
 
 	require("telescope").load_extension("fzf")
-
-	SetupKeymap("n", "<leader>lg", "<cmd>Telescope live_grep<CR>")
-	SetupKeymap("n", "<leader>cs", "<cmd>Telescope colorscheme<CR>")
-	SetupKeymap("n", "<leader>fl", "<cmd>Telescope find_files<CR>")
 end

@@ -5,34 +5,11 @@ return function()
 	local api = require("nvim-tree.api")
 
 	local function on_attach(bufnr)
-		vim.keymap.set("n", "h", api.node.navigate.parent_close, { buffer = bufnr, noremap = true })
-		vim.keymap.set("n", "l", api.node.open.edit, { buffer = bufnr, noremap = true })
-		vim.keymap.set("n", "a", api.fs.create, { buffer = bufnr, noremap = true })
-		vim.keymap.set("n", "d", api.fs.remove, { buffer = bufnr, noremap = true })
-		vim.keymap.set("n", "r", api.fs.rename_sub, { buffer = bufnr, noremap = true })
-
-		vim.keymap.set("n", "f", function()
-			local hop = require("hop")
-			local jump_target = require("hop.jump_target")
-
-			local generator = jump_target.jump_targets_by_scanning_lines
-			local options = require("hop.defaults")
-
-			hop.hint_with_callback(
-				generator(jump_target.regex_by_line_start_skip_whitespace()),
-				options,
-				function(target)
-					hop.move_cursor_to(
-						target.window,
-						target.line + 1,
-						target.column - 1,
-						options.hint_offset,
-						options.direction
-					)
-					api.node.open.edit()
-				end
-			)
-		end, { buffer = bufnr, noremap = true })
+		SetupKeymap("n", "h", api.node.navigate.parent_close, { buffer = bufnr, noremap = true, nowait = true })
+		SetupKeymap("n", "l", api.node.open.edit, { buffer = bufnr, noremap = true, nowait = true })
+		SetupKeymap("n", "a", api.fs.create, { buffer = bufnr, noremap = true, nowait = true })
+		SetupKeymap("n", "d", api.fs.remove, { buffer = bufnr, noremap = true, nowait = true })
+		SetupKeymap("n", "r", api.fs.rename_sub, { buffer = bufnr, noremap = true, nowait = true })
 	end
 
 	require("nvim-tree").setup({
@@ -42,6 +19,23 @@ return function()
 
 		renderer = {
 			root_folder_label = false,
+			highlight_git = true,
+
+			icons = {
+				git_placement = "after",
+			},
+
+			indent_markers = {
+				enable = true,
+				inline_arrows = true,
+				icons = {
+					corner = "└",
+					edge = "│",
+					item = "│",
+					bottom = "─",
+					none = " ",
+				},
+			},
 		},
 
 		view = {

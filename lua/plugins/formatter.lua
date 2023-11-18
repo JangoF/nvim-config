@@ -20,5 +20,5 @@ return function()
 		},
 	})
 
-	SetupKeymap("n", "<leader>ff", "<cmd>Format<CR>")
+	SetupKeymap("n", "<leader>fa", "<cmd>Format<CR>")
 end

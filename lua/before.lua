@@ -51,5 +51,10 @@ function SetupKeymap(mode, key, command, options)
 		table.insert(characters, mode:sub(i, i))
 	end
 
-	vim.keymap.set(characters, key, command, options or { noremap = true, nowait = true })
+  if (type(options) == "table") then
+	  vim.keymap.set(characters, key, command, options)
+  else
+	  vim.keymap.set(characters, key, command, { noremap = true, nowait = true, desc = options })
+  end
+
 end

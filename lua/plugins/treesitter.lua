@@ -1,17 +1,39 @@
-return function()
-	require("nvim-treesitter.configs").setup({
-		auto_install = true,
+return {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	event = "BufAdd",
+	config = function()
+		require("nvim-treesitter.configs").setup({
+			auto_install = true,
 
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
 
-    -- incremental_selection = { enable = true },
-    textobjects = { enable = true },
+			indent = {
+				enable = true,
+			},
+		})
+	end,
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-textobjects",
 
-		indent = {
-			enable = true,
-		},
-	})
-end
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				textobjects = {
+					select = {
+						enable = true,
+					lookahead = true,
+						keymaps = {
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+						},
+						include_surrounding_whitespace = false,
+					},
+				},
+			})
+		end,
+	},
+}
